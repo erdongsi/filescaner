@@ -3,9 +3,15 @@
 const fs = require("fs");
 const path = require("path");
 
-const helper = require("../utils/helper");
+const helper = require("../../common/helper");
 
 class filescaner {
+    static getInst() {
+        if (helper.isNullOrUndefined(filescaner.inst)) {
+            filescaner.inst = new filescaner();
+        }
+        return filescaner.inst;
+    }
     constructor() {
         this._name = "filescaner";
         this._cancel = false;
@@ -78,3 +84,4 @@ class filescaner {
 }
 
 module.exports = filescaner;
+
